@@ -3,16 +3,16 @@ import './App.css';
 import Lists from './components/Lists';
 import Form from './components/Form';
 
+const initialTodoData = JSON.parse(localStorage.getItem("todoData") || "[]");
+
 export default function App() {
-  const [todoData, setTodoData] = useState([
-    { id: 1, title: "공부하기", completed: true },
-    { id: 2, title: "청소하기", completed: false },
-  ]);
+  const [todoData, setTodoData] = useState(initialTodoData);
   const [value, setValue] = useState("");
 
   const handleClick = useCallback((id: number) => {
     let newTodoData = todoData.filter((data) => data.id !== id);
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", JSON.stringify(newTodoData));
   }, [todoData]);
 
   const handleSubmit = (e: any) => {
@@ -28,11 +28,13 @@ export default function App() {
 
     // 원래 있던 할 일에 새로운 할 일 더하기
     setTodoData((prev) => [...prev, newTodo]);
+    localStorage.setItem("todoData", JSON.stringify([...prev, newTodo]));
     setValue("");
   };
 
   const handleRemoveClick = () => {
     setTodoData([]);
+    localStorage.setItem("todoData", JSON.stringify([]));
   };
   
   return (

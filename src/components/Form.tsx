@@ -14,7 +14,7 @@ export default function Form({ value, setValue, setTodoData, handleSubmit }) {
           type='text'
           name='value'
           className='w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow'
-          placeholder="할 일을 입력하세요"
+          placeholder="해야 할 일을 입력하세요"
           value={value}
           onChange={handleChange}
         />

@@ -18,6 +18,7 @@ export const Lists = React.memo(({ handleClick, todoData, setTodoData }) => {
     // 2. 원하는 자리에 insert
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", JSON.stringify(newTodoData));
   }
 
   return (
