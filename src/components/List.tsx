@@ -1,8 +1,9 @@
 import React from 'react'
 
-const List = ({
+const List = React.memo(({
   id, title, completed, todoData, setTodoData, provided, snapshot,
 }) => {
+  console.log("List Component");
   
   const handleClick = (id: number) => {
     let newTodoData = todoData.filter((data) => data.id !== id);
@@ -43,7 +44,7 @@ const List = ({
       </div>
     </div>
   )
-}
+});
 
 export default List;
 
